@@ -36,7 +36,7 @@ export default {
     computed: {
         isFolder: function () {
             return this.value.children && this.value.children.length;
-        },
+        }
     },
     methods: {
         toggle: function () {
