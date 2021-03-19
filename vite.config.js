@@ -25,8 +25,8 @@ module.exports = defineConfig({
     //base: process.env.VITE_BASE_URL,
     build:{
       outDir:process.env.VITE_OUTPUT_DIR,
-      base: process.env.VITE_BASE_URL
-      //assetsDir: process.env.VITE_ASSETS_DIR
+      base: process.env.VITE_BASE_URL,
+      assetsDir: process.env.VITE_ASSETS_DIR
     },
     plugins: [vue()]
 
