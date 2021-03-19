@@ -23,10 +23,11 @@ for (const file of envFiles) {
 
 module.exports = defineConfig({
     //base: process.env.VITE_BASE_URL,
+    base: process.env.VITE_BASE_URL,
+    assetsDir: process.env.VITE_ASSETS_DIR,
     build:{
       outDir:process.env.VITE_OUTPUT_DIR,
-      base: process.env.VITE_BASE_URL,
-      assetsDir: process.env.VITE_ASSETS_DIR
+    
     },
     plugins: [vue()]
 
