@@ -3,7 +3,7 @@
        
         <div class="pape-mindnote__bd">
             <div class="pape-mindnote__bd__title">
-                <input type="text" placeholder="无标题" class="input-title">
+                <input type="text" placeholder="无标题" ref="title" class="input-title">
             </div>
             <div  class="pape-mindnote__bd__tree">
                  <mindnote
@@ -33,6 +33,7 @@ export default {
     },
     created() {
         this.getData();
+        this.$nextTick(()=>this.$refs.title.focus())
     },
     methods: {
         getData() {
