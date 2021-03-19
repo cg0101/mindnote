@@ -4,6 +4,7 @@
         <mindnote-item :key="index" ref="mindnoteTree" :item="item" @hit-enter="enterItem" @hit-tab="tabItem" @hit-delete="deleteItem" @press-inputut="inputContent">
         </mindnote-item>
         <div class="mindnote-children" v-show="isOpen" v-if="item.children && item.children.length">
+            <div class="mindnote-children__connection"></div>
             <mindnote :propsitem="item.children" @press-inputut="inputContent"></mindnote>
         </div>
     </div>
@@ -111,9 +112,17 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .mindnote-children {
     position: relative;
     padding-left: 20px;
+}
+.mindnote-children__connection{
+    position: absolute;
+    border-left: 1px #b2b3b4 solid;
+    height: 100%;
+    top: 0;
+    left: 12px;
+    z-index: 1;
 }
 </style>
