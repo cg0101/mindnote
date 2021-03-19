@@ -21,6 +21,6 @@ const routes = [
 ];
 
 export default createRouter({
-    history: createWebHistory(process.env.VITE_BASE_URL),
+    history: createWebHistory(),//process.env.VITE_BASE_URL
     routes,
 });
