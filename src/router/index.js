@@ -21,6 +21,7 @@ const routes = [
 ];
 
 export default createRouter({
-    history: createWebHistory('/z-mindnote/'),//
+    // mode: "history",
+    history: createWebHistory('/z-mindnote/#/'),//
     routes,
 });

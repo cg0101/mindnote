@@ -1,0 +1,1 @@
+let x=x=>x+"1.0.0";var t={setLocalStorage:(t,e)=>localStorage.setItem(x(t),JSON.stringify(e)),getLocalStorage:t=>JSON.parse(localStorage.getItem(x(t))),uniqueid:()=>"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,(function(x){const t=16*Math.random()|0;return("x"==x?t:3&t|8).toString(16)}))};export{t as u};
