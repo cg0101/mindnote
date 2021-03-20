@@ -6,7 +6,12 @@
             <input type="text" placeholder="无标题" v-model="title" @change="onTitleChange" ref="title" class="input-title">
         </div>
         <div class="pape-mindnote__bd__tree">
-            <mindnote class="mindnote" ref="mindnote" :propsitem="listItemData" @press-input="pressInput"></mindnote>
+            <mindnote 
+             class="mindnote" ref="mindnote" :propsitem="listItemData" 
+            @press-input="saveMindnote"
+            @add-subitem="saveMindnote"
+            @delete-item="saveMindnote"
+             ></mindnote>
         </div>
 
     </div>
@@ -22,7 +27,7 @@ export default {
     components: {
         Mindnote
     },
-    props: ["mindnoteId"],
+    // props: ["mindnoteId"],
     data() {
         return {
             title: this.getDefaultTitle(),
@@ -38,14 +43,15 @@ export default {
     },
     methods: {
         getData() {
-            const tmp = util.getLocalStorage(this.mindnoteId);
+            const tmp = util.getLocalStorage(this.getMindnoteId());
             this.listItemData = tmp;
         },
-        pressInput() {
-            util.setLocalStorage(this.mindnoteId, this.listItemData);
+        saveMindnote() {
+            console.log('saveMindnote',this.listItemData)
+            util.setLocalStorage(this.getMindnoteId(), this.listItemData);
         },
         getMindnoteId() {
-            return this.$route.params.mindnoteId || this.mindnoteId;
+            return this.$route.params.mindnoteId;
         },
         getDefaultTitle() {
             let mindnotePage = this.fetchMindnoteById(this.getMindnoteId());

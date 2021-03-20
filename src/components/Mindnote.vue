@@ -1,11 +1,11 @@
 <template>
 <div class="mindnote">
     <div v-for="(item, index) in treeData" :key="index" ref="treeData">
-        <mindnote-item :key="index" ref="mindnoteTree" :item="item" @hit-enter="enterItem" @hit-tab="tabItem" @hit-delete="deleteItem" @press-inputut="inputContent">
+        <mindnote-item :key="index" ref="mindnoteTree" :item="item" @hit-enter="enterItem" @hit-tab="tabItem" @hit-delete="deleteItem" @press-input="inputContent">
         </mindnote-item>
         <div class="mindnote-children" v-show="isOpen" v-if="item.children && item.children.length">
             <div class="mindnote-children__connection"></div>
-            <mindnote :propsitem="item.children" @press-inputut="inputContent"></mindnote>
+            <mindnote :propsitem="item.children" @press-input="inputContent" @add-subitem="inputContent"></mindnote>
         </div>
     </div>
 </div>
@@ -51,6 +51,7 @@ export default {
             console.log("child > toggle");
             this.isOpen = !this.isOpen;
         },
+        
 
         enterItem(item) {
             console.log("child > enterItem", this);
@@ -66,6 +67,8 @@ export default {
             //添加新节点
             this.treeData.splice(newitemindex, 0, newitem);
             this.$nextTick(() => this.$el.children[newitemindex].querySelector('input').focus())
+            // debugger;
+            this.$emit("press-input");
         },
 
         addSubitem() {
@@ -85,7 +88,7 @@ export default {
                 }
                 target.children.push(item.value);
                 item.$parent.treeData.splice(itemkey, 1);
-                this.$emit("press-inputut");
+                this.$emit("press-input");
                 //下一个层级的input获取焦点
                 setTimeout(() => {
                     this.$el.querySelector('.mindnote-children').querySelector('input').focus()
@@ -102,11 +105,13 @@ export default {
             console.log("child > deleteItem", this.treeData);
             const itemkey = item._.vnode.key
             item.$parent.treeData.splice(itemkey, 1);
+            this.$emit("delete-item");
+
         },
 
         inputContent() {
             console.log("child > inputContent", this);
-            this.$emit("press-inputut");
+            this.$emit("press-input");
         }
     }
 }
@@ -119,7 +124,7 @@ export default {
 }
 .mindnote-children__connection{
     position: absolute;
-    border-left: 1px #b2b3b4 solid;
+    border-left: 1px #eee solid;
     height: 100%;
     top: 0;
     left: 12px;
