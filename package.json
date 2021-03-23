@@ -5,7 +5,8 @@
   "author": "zhangchi",
   "scripts": {
     "dev": "NODE_ENV=development vite",
-    "build": "NODE_ENV=production vite build"
+    "build": "NODE_ENV=production vite build",
+    "docs":"NODE_ENV=production vite build && git add . && git commit -m 'docs pub' && git push origin master"
   },
   "dependencies": {
     "vue": "^3.0.5",
