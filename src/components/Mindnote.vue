@@ -106,6 +106,12 @@ export default {
             const itemkey = item._.vnode.key
             item.$parent.treeData.splice(itemkey, 1);
             this.$emit("delete-item");
+            this.$nextTick(()=>{
+                  setTimeout(() => {
+                    let lineItems = this.$el.parentElement.querySelectorAll('.line-item')
+                    lineItems[lineItems.length-1].querySelector('input').focus()
+                }, 100)
+            })
 
         },
 

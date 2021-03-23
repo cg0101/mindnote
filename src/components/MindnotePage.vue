@@ -173,7 +173,8 @@ export default {
     right:-80px;
 }
 .page-mindnote__mindmap{
-        position: absolute;
+    z-index: 1;
+    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
