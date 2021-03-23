@@ -64,6 +64,21 @@ export default {
                 remark: "",
                 children: [],
             };
+            //如果没有子节点，但是上一个节点是空的，直接创建兄弟节点
+            const parentTreeData = item.$parent.treeData;
+            if (parentTreeData && parentTreeData.length>=1) {
+                // debugger;
+                if(!parentTreeData[newitemindex-1].name){
+                    if(item.$parent.$parent && item.$parent.$parent.treeData){
+                        item.$parent.$parent.treeData.push(newitem)
+                        this.$emit("press-input");
+                        // debugger;
+                        this.$nextTick(() =>this.$el.parentElement.parentElement.nextElementSibling.querySelector('input').focus())
+
+                    }
+                    return;
+                }
+            }
             //添加新节点
             this.treeData.splice(newitemindex, 0, newitem);
             this.$nextTick(() => this.$el.children[newitemindex].querySelector('input').focus())
@@ -83,6 +98,9 @@ export default {
             if (itemkey) {
                 const indexitem = item._.vnode.key - 1;
                 const target = item.$parent.treeData[indexitem];
+              
+
+                //如果没有子节点，就创建子节点
                 if (!target.children) {
                     target.children = [];
                 }
