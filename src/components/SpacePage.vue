@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import util from "../utils/util"
+import {setLocalStorage,getLocalStorage,uniqueid} from "../utils/util"
 import MindnoteCard from "./MindnoteCard.vue";
 
 export default {
@@ -47,7 +47,7 @@ export default {
     methods: {
         addNewMindnotePage() {
             console.log("click add new");
-            const newItemId = util.uniqueid();
+            const newItemId = uniqueid();
             const createdAt = new Date();
             const newitem = {
                 id: newItemId,
@@ -57,8 +57,8 @@ export default {
                 },
             };
             this.itemList.push(newitem);
-            util.setLocalStorage("z-mindnoteItems", this.itemList);
-            util.setLocalStorage(newItemId, [{
+            setLocalStorage("z-mindnoteItems", this.itemList);
+            setLocalStorage(newItemId, [{
                 id: 1,
                 name: "Untitled"
             }]);
@@ -68,11 +68,11 @@ export default {
         deleteItem(id, index) {
             console.log("delete item", this, id, index);
             this.itemList.splice(index, 1);
-            util.setLocalStorage("z-mindnoteItems", this.itemList);
+            setLocalStorage("z-mindnoteItems", this.itemList);
             localStorage.removeItem(id.toString());
         },
         fetchData() {
-            const localDB = util.getLocalStorage("z-mindnoteItems");
+            const localDB = getLocalStorage("z-mindnoteItems");
             // console.log("index", localDB, '登陆');
             if (localDB == null) {
                 console.log("no local data \ncheck for cloud data");
