@@ -4,9 +4,16 @@ a powelful mindnote by vue + javascript
 
 https://fancylife.github.io/z-mindnote/
 
-## quick start
+# quick start
 ```
 npm i
 npm run dev
 npm run build
 ```
+
+
+# License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+Copyright (c) 2013-present, zhangchi 
