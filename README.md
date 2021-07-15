@@ -2,7 +2,7 @@
 a powelful mindnote by vue + javascript
 # preview
 
-https://fancylife.github.io/z-mindnote/
+https://cg0101.github.io/z-mindnote/
 
 # quick start
 ```
