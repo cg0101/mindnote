@@ -57,7 +57,7 @@ export default {
                 },
             };
             this.itemList.push(newitem);
-            setLocalStorage("z-mindnoteItems", this.itemList);
+            setLocalStorage("mindnoteItems", this.itemList);
             setLocalStorage(newItemId, [{
                 id: 1,
                 name: "Untitled"
@@ -68,11 +68,11 @@ export default {
         deleteItem(id, index) {
             console.log("delete item", this, id, index);
             this.itemList.splice(index, 1);
-            setLocalStorage("z-mindnoteItems", this.itemList);
+            setLocalStorage("mindnoteItems", this.itemList);
             localStorage.removeItem(id.toString());
         },
         fetchData() {
-            const localDB = getLocalStorage("z-mindnoteItems");
+            const localDB = getLocalStorage("mindnoteItems");
             // console.log("index", localDB, '登陆');
             if (localDB == null) {
                 console.log("no local data \ncheck for cloud data");

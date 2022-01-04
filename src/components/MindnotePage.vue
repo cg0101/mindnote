@@ -106,7 +106,7 @@ export default {
             return this.fetchLocalDb().find((item) => item.id == mindnoteId)
         },
         fetchLocalDb(){
-            return getLocalStorage("z-mindnoteItems")
+            return getLocalStorage("mindnoteItems")
         },
         onTitleChange() {
             let localDB = this.fetchLocalDb();
@@ -116,7 +116,7 @@ export default {
             if (mindnotePage) {
                 mindnotePage.name = this.title;
                 localDB[index] = mindnotePage;
-                setLocalStorage('z-mindnoteItems', localDB);
+                setLocalStorage('mindnoteItems', localDB);
             }
         }
     },
